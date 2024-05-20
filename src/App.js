@@ -1,13 +1,16 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
+// Main App component
 function App() {
   const [script, setScript] = useState('');
   const [output, setOutput] = useState('');
 
+  // Function to handle form submission
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
+      // Making API call to backend
       const response = await axios.post(`${process.env.REACT_APP_PYTHON_SCRIPT_RUNNER_BE_URL}/run-script`, { script });
       setOutput(response.data.output);
     } catch (error) {
@@ -54,4 +57,5 @@ function App() {
   );
 }
 
+// Exporting App component
 export default App;
